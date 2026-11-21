@@ -14,13 +14,13 @@ Context document for the repo. It records what is known about the class challeng
 ### Where this knowledge comes from
 
 - One Teams class transcript (Nov 10, 2026, "Clase con socio formador"). It is heavily garbled by auto-transcription and covers only the start of the lecture and the closing minutes. It contains **no project requirements**. It only gives motivation: statistical methods help authorities estimate expected voters per station, estimate resource needs, detect irregularities and improve the efficiency and reliability of the voting process. It also says the next class is a Python programming lab implementing these concepts.
-- The core simulation script `proceso_electoral.py`, provided by the teacher. Its comments are the only requirement-like statements available (section 4).
+- The core simulation script `baseline.py` (provided by the teacher as `proceso_electoral.py`, renamed here). Its comments are the only requirement-like statements available (section 4).
 - A presentation slide with the suggested architecture (section 3).
 - Earlier class meetings explaining the model and agents were held on Teams. They have not been seen by the author of this document.
 
 ## 2. Core simulation (provided baseline)
 
-`proceso_electoral.py` is a pure discrete-event simulation (`heapq` event queue, integer minutes). It currently covers: voter arrival, nominal-list verification, booth (*mampara*), and the ballot box (*urna*). It does not use Mesa yet.
+`baseline.py` is a pure discrete-event simulation (`heapq` event queue, integer minutes). It currently covers: voter arrival, nominal-list verification, booth (*mampara*), and the ballot box (*urna*). It does not use Mesa; the Mesa port is the `electoral/` package, checked against this script by `tests/test_baseline_parity.py`.
 
 ### Voter flow
 
@@ -77,7 +77,7 @@ Design implications to settle:
 
 ## 4. Earthquake extension (in the current baseline file)
 
-`proceso_electoral-1.py` (the file in this repo) already contains an earthquake external event that this document did not originally cover. **[Confirmed in code]** At most one per run, tested each minute with probability 0.0002. The station evacuates: queues and resources are emptied, a vote being cast is voided, and the station stays closed 20 minutes. Each evacuee returns with probability 0.60 (and then re-decides whether to queue), otherwise leaves for good. Voters arriving while closed leave. Note the baseline file is named `proceso_electoral-1.py`, not `proceso_electoral.py`.
+`baseline.py` (the file in this repo) already contains an earthquake external event that this document did not originally cover. **[Confirmed in code]** At most one per run, tested each minute with probability 0.0002. The station evacuates: queues and resources are emptied, a vote being cast is voided, and the station stays closed 20 minutes. Each evacuee returns with probability 0.60 (and then re-decides whether to queue), otherwise leaves for good. Voters arriving while closed leave. Note the baseline file is named `proceso_electoral-1.py`, not `baseline.py`.
 
 ## 5. Decisions taken in the implementation **[Provisional, change when the teacher answers]**
 

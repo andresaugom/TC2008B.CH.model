@@ -18,4 +18,4 @@ m.snapshot()
 m.results()
 ```
 
-`proceso_electoral-1.py` is the teacher's script, kept untouched as the reference for the parity tests.
+`baseline.py` is the teacher's script, kept untouched as the reference for the parity tests.

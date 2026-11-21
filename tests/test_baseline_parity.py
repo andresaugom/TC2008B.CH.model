@@ -9,7 +9,7 @@ import pytest
 
 from electoral import Config, ElectionModel
 
-BASELINE = Path(__file__).resolve().parent.parent / "proceso_electoral-1.py"
+BASELINE = Path(__file__).resolve().parent.parent / "baseline.py"
 
 # Event types the baseline prints (the model logs a few more, for the frontend)
 PRINTED = {
